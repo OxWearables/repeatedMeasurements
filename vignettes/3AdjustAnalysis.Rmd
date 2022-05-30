@@ -1,0 +1,63 @@
+---
+title: "Example 2: Adjusting an analysis for regression dilution"
+author: "R-Walmsley"
+date: "04/02/2022"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Example 2: Adjusting an analysis for regression dilution}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Set up 
+
+We load the `survival` package (for Cox models):
+```{r loadpackages}
+library(survival)
+```
+
+We load the package which this site is based around:
+```{r}
+library(repeatedMeasurements)
+```
+
+We load some data which was previously prepared:
+```{r}
+df <- readRDS("../../repeatedMeasurementsStudy/data/example_data.RDS")
+```
+
+## Run basic model
+
+Cox model to associate overall physical activity with incident cardiovascular disease. Model uses age as the timescale and is adjusted for sex.
+```{r}
+mod <- coxph(Surv(age_entry_days, age_exit_days, inc_cvd) ~ pa + sex, df)
+summary(mod)
+```
+
+## Regression dilution 
+
+We have already calculated the regression dilution coefficient and variance in Example 1. Here we will use $\lambda = 0.71$ and $Var(\lambda) = 0.00011$.
+
+## Adjusting the analysis for regression dilution 
+
+We adjust the coefficients from the model for regression dilution due to within-person variation. 
+
+We will use a function we have prepared earlier to do this. This implements the regression dilution correction described in the Introduction. 
+
+```{r}
+adj_coef <- adjust_betas(mod, "pa", lambdas = 0.71, var_lambdas = 0.00011)
+```
+
+For details on how to load this function yourself, see the landing page. It can also be passed a named list of models, and vectors to `lambdas` and `var_lambdas`. 
+
+We can then look at the adjusted values. Results are produced on both the log-hazard (ln(HR)) and hazard ratio scale, but we'll look just at the HR scale:
+```{r}
+round_2_dp(adj_coef[, c("HR_orig", "HR_orig_lo", "HR_orig_hi", "HR_adj", "HR_adj_lo", "HR_adj_hi")])
+```
+
+Comparing the original and adjusted Hazard Ratios and confidence intervals, we see that adjustment for regression dilution has moved the HR further from 1. The confidence interval has also got wider. 
+

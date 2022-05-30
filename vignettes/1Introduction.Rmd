@@ -1,0 +1,43 @@
+---
+title: "Introduction: accounting for within-person variability"
+author: "R-Walmsley"
+date: "04/02/2022"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction: accounting for within-person variability}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(repeatedMeasurements)
+```
+
+## What is within-person variation?
+
+- Very brief, referenced para
+
+## What impact does within-person variation have on analyses? 
+
+- Very brief, referenced para
+
+## How can within-person variation be quantified? 
+
+- Specifically introduce methods implemented
+
+## How can analyses account for within-person variation? 
+
+- Specifically introduce methods implemented
+
+In this showcase we use one of the most basic correction methods, suitable for analyses using a single error-prone exposure alongside non-error prone covariates. Specifically: 
+
+- The adjusted $\beta$ coefficient is given by $\frac{\beta}{\lambda}$.
+- The variance on the adjusted coefficient can be calculated using the delta method, giving (Ref: Knuiman et al 1998, DOI:10.1016/s1047-2797(97)00107-5): 
+$$
+Var(\beta_{z}) = \frac{Var(\beta_x)}{\lambda^2} + \bigg(\frac{\beta_x}{\lambda^2}\bigg)^2Var(\lambda)
+$$
+
+
+
+

@@ -1,0 +1,18 @@
+---
+title: "Example 1: Calculating Regression Dilution Coefficient"
+author: "R-Walmsley"
+date: "04/02/2022"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Example 1: Calculating Regression Dilution Coefficient}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(repeatedMeasurements)
+```
+
+## EXAMPLE OF HOW TO CALCULATE LAMBDA
+
