@@ -9,7 +9,7 @@ round_dp <- function(dp) {
 #' @param x Object to round
 #' @return Input rounded to 3 dp
 #' @export
-round_2_dp <- round_dp(3)
+round_3_dp <- round_dp(3)
 
 #' Utility function to round to 2 d.p.
 #'
