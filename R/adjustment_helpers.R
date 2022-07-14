@@ -11,7 +11,7 @@ adjust_beta_oneval <- function(beta, lambda){
 
 #' Adjust standard error on a beta coefficient for regression dilution
 #'
-#' XXX ADD DESCRIPTION HERE
+#' Adjusts the standard error on a beta coefficient for regression dilution analytically.
 #'
 #' @param beta Coefficient from epidemiological model to be adjusted
 #' @param beta_se Standard error on beta coefficient from epidemiological model
@@ -25,7 +25,7 @@ adjust_se_oneval <- function(beta, beta_se, lambda, var_lambda){
 
 #' Adjust beta coefficients for regression dilution
 #'
-#' Adjusts beta coefficients for regression dilution using a calculated value of lambda. Arguments can be single values or vectors.
+#' Adjusts beta coefficients for regression dilution using a calculated value of lambda. Arguments can be single values or vectors. This is a vectorised version of univariable adjustment i.e. it performs univariable adjustment for multiple models at once. It does NOT perform multivariable regression calibration.
 #'
 #' @param beta Coefficients from epidemiological model to be adjusted
 #' @param lambda Regression dilution coefficient
@@ -37,7 +37,7 @@ adjust_beta <- Vectorize(adjust_beta_oneval)
 
 #' Adjust standard errors on beta coefficients
 #'
-#' XXX ADD DESCRIPTION (arguments can be single values or vectors)
+#' Adjusts standard errors on a beta coefficient for regression dilution analytically. Arguments can be single values or vectors. This is a vectorised version of univariable adjustment i.e. it performs univariable adjustment for multiple models at once. It does NOT perform multivariable regression calibration.
 #'
 #' @param beta Coefficient from epidemiological model to be adjusted
 #' @param beta_se Standard error on beta coefficient from epidemiological model
