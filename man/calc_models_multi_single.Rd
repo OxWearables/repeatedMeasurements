@@ -2,7 +2,7 @@
 % Please edit documentation in R/multivariable_adjustment.R
 \name{calc_models_multi_single}
 \alias{calc_models_multi_single}
-\title{Calculates linear models for multivariable adjustment}
+\title{Calculates linear models for multivariable adjustment (direct multivariate regression calibration model)}
 \usage{
 calc_models_multi_single(
   var_names,
@@ -10,7 +10,8 @@ calc_models_multi_single(
   suffix_baseline = "_s0",
   suffix_rep = c("_s1", "_s2", "_s3", "_s4"),
   exclusion_indic = "excluded",
-  covariates = NULL
+  covariates = NULL,
+  precision_weighted = FALSE
 )
 }
 \arguments{
@@ -25,14 +26,16 @@ calc_models_multi_single(
 \item{exclusion_indic}{Name of variable indicating row should be excluded for that repeat}
 
 \item{covariates}{Covariates to adjust for in lambda estimation model}
+
+\item{precision_weighted}{Indicator of whether precision weighting should be used in model for follow up based on number of repeats}
 }
 \value{
-Multivariable model
+Multivariate model
 }
 \description{
-Calculates linear models for multivariable adjustment using repeated measurements data.
+Calculates multivariate linear model for multivariable adjustment using repeated measurements data.
 }
 \details{
 NOTE: uses mean value across all follow-up measurements with data
-NOTE: I think this is essentially redundant with
+NOTE: This is essentially redundant with \code{calc_models_multi}, but it's directly creating multivariate model rather than creating each univariate model (coefficients within each model should be same, though)
 }

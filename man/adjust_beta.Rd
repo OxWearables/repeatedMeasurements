@@ -15,5 +15,5 @@ adjust_beta(beta, lambda)
 Regression-dilution adjusted beta coefficients
 }
 \description{
-Adjusts beta coefficients for regression dilution using a calculated value of lambda. Arguments can be single values or vectors.
+Adjusts beta coefficients for regression dilution using a calculated value of lambda. Arguments can be single values or vectors. This is a vectorised version of univariable adjustment i.e. it performs univariable adjustment for multiple models at once. It does NOT perform multivariable regression calibration.
 }

@@ -19,5 +19,5 @@ adjust_se_oneval(beta, beta_se, lambda, var_lambda)
 Regression-dilution adjusted standard error of coefficient
 }
 \description{
-XXX ADD DESCRIPTION HERE
+Adjusts the standard error on a beta coefficient for regression dilution analytically.
 }

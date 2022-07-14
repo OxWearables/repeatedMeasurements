@@ -19,5 +19,5 @@ adjust_se(beta, beta_se, lambda, var_lambda)
 Regression-dilution adjusted beta coefficients
 }
 \description{
-XXX ADD DESCRIPTION (arguments can be single values or vectors)
+Adjusts standard errors on a beta coefficient for regression dilution analytically. Arguments can be single values or vectors. This is a vectorised version of univariable adjustment i.e. it performs univariable adjustment for multiple models at once. It does NOT perform multivariable regression calibration.
 }

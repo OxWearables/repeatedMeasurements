@@ -10,7 +10,8 @@ calc_models_multi(
   suffix_baseline = "_s0",
   suffix_rep = c("_s1", "_s2", "_s3", "_s4"),
   exclusion_indic = "excluded",
-  covariates = NULL
+  covariates = NULL,
+  precision_weighted = FALSE
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ calc_models_multi(
 \item{exclusion_indic}{Name of variable indicating row should be excluded for that repeat}
 
 \item{covariates}{Covariates to adjust for in lambda estimation model}
+
+\item{precision_weighted}{Indicator of whether precision weighting should be used in model for follow up based on number of repeats}
 }
 \value{
 List of models for different outcomes

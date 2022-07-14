@@ -10,7 +10,8 @@ calc_lambda(
   suffix_baseline = "_s0",
   suffix_rep = c("_s1", "_s2", "_s3", "_s4"),
   exclusion_indic = "excluded",
-  covariates = NULL
+  covariates = NULL,
+  precision_weighted = FALSE
 )
 }
 \arguments{
@@ -22,15 +23,17 @@ calc_lambda(
 
 \item{suffix_rep}{Suffix(es) denoting a follow-up measurement}
 
-\item{exclusion_indic}{Name of variable indicating row should be excluded for that repeat}
+\item{exclusion_indic}{Name of variable indicating row should be excluded for that repeat (should have same suffix as indicated in \code{suffix_baseline}, \code{suffix_rep})}
 
 \item{covariates}{Covariates to adjust for in lambda estimation model}
+
+\item{precision_weighted}{Indicator of whether precision weighting should be used in model for follow up based on number of repeats}
 }
 \value{
 List containing lambda estimate and its variance.
 }
 \description{
-Calculates lambda (regression dilution coefficient) using repeated measurements data.
+Calculates lambda (regression dilution coefficient) using repeated measurements data. Data should be in wide format i.e. one row per participant with multiple columns for the different repeats. Different repeats should be indicated consistently by the same suffix.
 }
 \details{
 NOTE: uses mean value across all follow-up measurements with data
