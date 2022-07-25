@@ -20,6 +20,28 @@ calc_mean_reps <- function(var_name, data, suffix_rep, exclusion_indic){
 }
 
 
+#' Calculate sd of repeats with valid data
+#'
+#' Calculates sd of repeats with valid data
+#'
+#' @inheritParams calc_lambda
+#' @return Column containing the sd of repeats with valid data
+calc_sd_reps <- function(var_name, data, suffix_rep, exclusion_indic){
+
+  # Store value for those included:
+  for (suff in suffix_rep){
+    inc_ind <- make_inc_ind(data = data, suffix_rep = suffix_rep, exclusion_indic = exclusion_indic)[, paste0("with_good_data", suff)]
+    data[, paste0(var_name, "_with_good_data_", suff)] <- NA
+    data[inc_ind, paste0(var_name, "_with_good_data_", suff)] <- data[inc_ind, paste0(var_name, suff)]
+  }
+
+  # Calculate mean
+  col_to_return <- apply(data[, paste0(var_name, "_with_good_data_", suffix_rep)], 1, sd, na.rm = TRUE)
+
+  return(col_to_return)
+}
+
+
 #' Count valid repeats
 #'
 #' Utility function to count valid repeats
