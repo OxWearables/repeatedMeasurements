@@ -150,10 +150,10 @@ calc_models_multi_slow <- function(var_names, data, suffix_baseline = "_s0", suf
 
     # Calc model
     form <- as.formula(paste0("mean_reps_w_data", var_name, "~", covs))
-    lamdba_lin <- lm(form, data, weights = precision_weights)
+    lambda_lin <- lm(form, data, weights = precision_weights)
 
     # Append model to list and remove
-    models_list[[var_name]] <- list(lambda_lin, cols)
+    models_list[[var_name]] <- lambda_lin
     rm(lambda_lin)
   }
 
